@@ -1,0 +1,616 @@
+datasets:
+  celeba_edges_128:
+    dataroot: ./datasets/celebA_edges_128
+    direction: BtoA
+    image_size: 128
+    input_nc: 1
+    meta: false
+    output_nc: 3
+    prefix: celebA_edges
+  celeba_edges_64:
+    dataroot: ./datasets/celebA_edges
+    direction: BtoA
+    image_size: 64
+    input_nc: 1
+    meta: false
+    output_nc: 3
+    prefix: celebA_edges
+  imagenet_imagenet_64:
+    dataroot: ./datasets/ImageNet
+    direction: AtoB
+    image_size: 64
+    input_nc: 3
+    meta: false
+    output_nc: 3
+    prefix: imagenet_aa
+  labelmap_cityscapes_128:
+    dataroot: ./datasets/cityscapes_128
+    direction: BtoA
+    image_size: 128
+    input_nc: 3
+    meta: false
+    output_nc: 3
+    prefix: cityscapes
+  labelmap_cityscapes_64:
+    dataroot: ./datasets/cityscapes_64
+    direction: BtoA
+    image_size: 64
+    input_nc: 3
+    meta: false
+    output_nc: 3
+    prefix: cityscapes
+  sketch_face_128:
+    dataroot: ./datasets/sketch_face/sketch_face_128
+    direction: AtoB
+    image_size: 128
+    input_nc: 1
+    meta: true
+    output_nc: 3
+    prefix: feret
+  sketch_face_64:
+    dataroot: ./datasets/sketch_face/sketch_face_64
+    direction: AtoB
+    image_size: 64
+    input_nc: 1
+    meta: true
+    output_nc: 3
+    prefix: feret
+  sketch_face_64_in3:
+    dataroot: ./datasets/sketch_face/sketch_face_64
+    direction: AtoB
+    image_size: 64
+    input_nc: 3
+    meta: true
+    output_nc: 3
+    prefix: feret
+experiments:
+  lf:
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    latent_features: 6
+    model: latent_feature
+    netD: basic_small
+    netG: lfunet_64
+  lf128:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    latent_features: 6
+    model: latent_feature
+    netD: basic
+    netG: lfunet_128
+  o1:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+  o1a:
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+  o1b:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    lambda_L1: 0
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+  o1c:
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    lambda_L1: 0
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+  o1d:
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_64
+  o4:
+    dataset: labelmap_cityscapes_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+  o5:
+    dataset: labelmap_cityscapes_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+  o6:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: encoder_decoder_128
+  o6a:
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+  o7:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    lambda_L1: 0
+    model: pix2pix
+    netD: basic
+    netG: encoder_decoder_128
+  o7a:
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    lambda_L1: 0
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+  o10:
+    dataset: labelmap_cityscapes_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: encoder_decoder_128
+  o11:
+    dataset: labelmap_cityscapes_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+  o12:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+    batch_size: 8
+  o13:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+    batch_size: 16
+  o14:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+    batch_size: 8
+    norm: batch
+  o15:
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+    batch_size: 16
+    norm: batch
+  p1:
+    batch_size: 1024
+    dataset: imagenet_imagenet_64
+    gan_mode: vanilla
+    lambda_L1: 0
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+    prefix: imagenet
+  p2:
+    batch_size: 1024
+    dataset: imagenet_imagenet_64
+    gan_mode: vanilla
+    lambda_L1: 0
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+    prefix: imagenet
+  # p4:
+  #   batch_size: 1024
+  #   dataset: imagenet_imagenet_64
+  #   gan_mode: vanilla
+  #   lambda_L1: 0
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: encoder_decoder_64
+  p5:
+    batch_size: 256
+    dataset: celeba_edges_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+  # p5a:
+  #   batch_size: 256
+  #   dataset: celeba_edges_64
+  #   gan_mode: vanilla
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: unet_128
+  p6:
+    batch_size: 256
+    dataset: celeba_edges_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+  p7:
+    batch_size: 256
+    dataset: celeba_edges_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+  p8:
+    batch_size: 256
+    dataset: celeba_edges_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: encoder_decoder_128
+transfer_experiments:
+  t1:
+    transfer: p5
+    transfer_with: gd
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t2:
+    transfer: p5
+    transfer_with: d
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t3:
+    transfer: p6
+    transfer_with: gd
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t4:
+    transfer: p6
+    transfer_with: d
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t5:
+    transfer: p7
+    transfer_with: gd
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t6:
+    transfer: p7
+    transfer_with: d
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: unet_128
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t7:
+    transfer: p8
+    transfer_with: gd
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: encoder_decoder_128
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t8:
+    transfer: p8
+    transfer_with: d
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic
+    netG: encoder_decoder_128
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t9:
+    transfer: p7
+    transfer_with: d
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: latent_feature
+    latent_features: 6
+    netD: basic
+    netG: lfunet_128
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t10:
+    transfer: p8
+    transfer_with: d
+    dataset: sketch_face_128
+    gan_mode: vanilla
+    model: latent_feature
+    latent_features: 6
+    netD: basic
+    netG: lfunet_128
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t11:
+    transfer: p5
+    transfer_with: d
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: latent_feature
+    latent_features: 6
+    netD: basic_small
+    netG: lfunet_64
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t12:
+    transfer: p6
+    transfer_with: d
+    dataset: sketch_face_64
+    gan_mode: vanilla
+    model: latent_feature
+    latent_features: 6
+    netD: basic_small
+    netG: lfunet_64
+    prefix: celebA_edges_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t13:
+    transfer: p1
+    transfer_with: gd
+    dataset: sketch_face_64_in3
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+    prefix: imagenet_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t14:
+    transfer: p1
+    transfer_with: d
+    dataset: sketch_face_64_in3
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: unet_64
+    prefix: imagenet_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t15:
+    transfer: p2
+    transfer_with: gd
+    dataset: sketch_face_64_in3
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+    prefix: imagenet_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  t16:
+    transfer: p2
+    transfer_with: d
+    dataset: sketch_face_64_in3
+    gan_mode: vanilla
+    model: pix2pix
+    netD: basic_small
+    netG: encoder_decoder_64
+    prefix: imagenet_pretrained_sketch_feret
+    variants:
+      - [load_iter, lr, niter, niter_decay]
+      - [100, 0.002, 0, 50]
+      - [100, 0.0005, 0, 50]
+      - [200, 0.002, 0, 50]
+      - [200, 0.0005, 0, 50]
+      - [50, 0.002, 0, 50]
+      - [50, 0.0005, 0, 50]
+  # t1a:
+  #   continue_discriminator: true
+  #   dataset: sketch_face_64
+  #   gan_mode: vanilla
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: unet_64
+  #   prefix: celebA_edges_pretrained_sketch_feret
+  # t1c:
+  #   continue_discriminator: true
+  #   dataset: sketch_face_64
+  #   gan_mode: vanilla
+  #   lr: 0.0001
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: unet_64
+  #   niter: 0
+  #   niter_decay: 100
+  #   prefix: celebA_edges_pretrained_sketch_feret
+  # t2a:
+  #   continue_discriminator: true
+  #   dataset: sketch_face_64
+  #   gan_mode: vanilla
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: encoder_decoder_64
+  #   prefix: imagenet_pretrained_sketch_feret
+  # t2b:
+  #   continue_discriminator: true
+  #   dataset: sketch_face_64
+  #   gan_mode: vanilla
+  #   lambda_L1: 0
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: encoder_decoder_64
+  #   prefix: imagenet_pretrained_sketch_feret
+  # t7a:
+  #   continue_train: true
+  #   dataset: labelmap_cityscapes_64
+  #   gan_mode: vanilla
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: encoder_decoder_64
+  #   prefix: imagenet_pretrained_cityscapes
+  # t7b:
+  #   continue_train: true
+  #   dataset: sketch_face_64
+  #   gan_mode: vanilla
+  #   lambda_L1: 0
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: encoder_decoder_64
+  #   prefix: imagenet_pretrained_sketch_feret
+  # t7c:
+  #   continue_train: true
+  #   dataset: sketch_face_64
+  #   gan_mode: vanilla
+  #   model: pix2pix
+  #   netD: basic_small
+  #   netG: encoder_decoder_64
+  #   prefix: imagenet_pretrained_sketch_feret
+possible_options:
+  - batch_size
+  - continue_discriminator
+  - continue_train
+  - crop_size
+  - dataroot
+  - direction
+  - display_env
+  - display_id
+  - display_winsize
+  - epoch_count
+  - gan_mode
+  - gpu_ids
+  - input_nc
+  - lambda_L1
+  - latent_features
+  - load_size
+  - lr
+  - model
+  - name
+  - netD
+  - netG
+  - niter
+  - niter_decay
+  - output_nc
