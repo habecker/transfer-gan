@@ -3,7 +3,7 @@
 <br><br><br>
 
 Dieses Repository enthält den Code zu meiner Masterarbeit über Transfer-Learning für Generative Adversarial Networks.
-Der Code basiert grundlegend auf der pix2pix und CycleGAN pytorch-Implementierung von junyanz: https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix (für dessen README siehe ``README_old.md``)
+Der Code basiert grundlegend auf der pix2pix und CycleGAN pytorch-Implementierung von junyanz: https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
 
 # Datensätze
 
